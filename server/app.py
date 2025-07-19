@@ -1,10 +1,12 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sqlite3
+import os
 
 app = Flask(__name__)
 CORS(app)
 DATABASE = 'portfolio.db'
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'portfolio123')
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
@@ -73,6 +75,25 @@ def contact():
     conn.commit()
     conn.close()
     return jsonify({'message': 'Message received successfully.'})
+
+@app.route('/messages', methods=['GET'])
+def get_messages():
+    password = request.args.get('password')
+    if password != ADMIN_PASSWORD:
+        return jsonify({'error': 'Unauthorized'}), 401
+    conn = get_db_connection()
+    messages = conn.execute('SELECT * FROM messages ORDER BY id DESC').fetchall()
+    conn.close()
+    messages_list = [
+        {
+            'id': msg['id'],
+            'name': msg['name'],
+            'email': msg['email'],
+            'message': msg['message']
+        }
+        for msg in messages
+    ]
+    return jsonify({'messages': messages_list})
 
 if __name__ == '__main__':
     init_and_seed_db()
