@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import sqlite3
 
@@ -15,8 +15,7 @@ def get_db_connection():
 def home():
     return jsonify({'message': 'Welcome to Ayush Portfolio API'})
 
-@app.route('/init_db')
-def init_db():
+def init_and_seed_db():
     conn = get_db_connection()
     conn.execute('''
         CREATE TABLE IF NOT EXISTS projects (
@@ -26,22 +25,24 @@ def init_db():
             link TEXT
         )
     ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            message TEXT NOT NULL
+        )
+    ''')
+    conn.execute('DELETE FROM projects')
     conn.commit()
-    conn.close()
-    return jsonify({'message': 'Database initialized and projects table created.'})
-
-@app.route('/add_sample_projects')
-def add_sample_projects():
-    conn = get_db_connection()
     projects = [
-        ('Portfolio Website', 'A personal portfolio built with React and Flask.', 'https://github.com/ayush/portfolio'),
-        ('Emotion Detection from Text', 'A machine learning project to detect emotions from textual data using Python.', 'https://github.com/ayush/emotion-detection'),
-        ('Arduino Motor Car', 'A robotics project to control a motor car using Arduino and sensors.', 'https://github.com/ayush/arduino-motor-car')
+        ('Portfolio Website', 'A personal portfolio built with React and Flask.', 'https://github.com/ayushchhipa1509/Portfolio'),
+        ('Emotion Recognition Project', 'A machine learning project to detect emotions from textual data using Python.', 'https://github.com/ayushchhipa1509/Emotion-Recognition'),
+        ('Arduino Motor Car', 'A robotics project to control a motor car using Arduino and sensors.', None)
     ]
     conn.executemany('INSERT INTO projects (title, description, link) VALUES (?, ?, ?)', projects)
     conn.commit()
     conn.close()
-    return jsonify({'message': 'Sample projects added.'})
 
 @app.route('/projects')
 def get_projects():
@@ -59,5 +60,20 @@ def get_projects():
     ]
     return jsonify({'projects': projects_list})
 
+@app.route('/contact', methods=['POST'])
+def contact():
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    message = data.get('message')
+    if not name or not email or not message:
+        return jsonify({'error': 'All fields are required.'}), 400
+    conn = get_db_connection()
+    conn.execute('INSERT INTO messages (name, email, message) VALUES (?, ?, ?)', (name, email, message))
+    conn.commit()
+    conn.close()
+    return jsonify({'message': 'Message received successfully.'})
+
 if __name__ == '__main__':
+    init_and_seed_db()
     app.run(debug=True)

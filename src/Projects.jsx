@@ -29,9 +29,11 @@ const Projects = () => {
           <li key={project.id}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View Project
-            </a>
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                View Project
+              </a>
+            ) : null}
           </li>
         ))}
       </ul>

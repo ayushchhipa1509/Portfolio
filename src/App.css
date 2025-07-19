@@ -117,3 +117,119 @@
 .Projects a:hover {
   text-decoration: underline;
 }
+
+.profile-contact {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.profile-contact p {
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.profile-contact strong {
+  min-width: 80px;
+  color: #0077ff;
+}
+
+.profile-contact a {
+  color: #222;
+  margin-left: 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-contact a:hover {
+  color: #0077ff;
+  text-decoration: underline;
+}
+
+.profile-skills {
+  margin-top: 18px;
+  text-align: left;
+}
+
+.profile-skills ul {
+  padding-left: 18px;
+  margin: 8px 0 0 0;
+}
+
+.profile-skills li {
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.profile-projects {
+  margin-top: 18px;
+  text-align: left;
+}
+
+.profile-projects ul {
+  padding-left: 18px;
+  margin: 8px 0 0 0;
+}
+
+.profile-projects li {
+  margin-bottom: 4px;
+}
+
+.profile-projects a {
+  color: #0077ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profile-projects a:hover {
+  text-decoration: underline;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 40px auto 0 auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form h2 {
+  margin: 0 0 12px 0;
+  color: #0077ff;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  resize: none;
+}
+
+.contact-form textarea {
+  min-height: 80px;
+}
+
+.contact-form button {
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button:hover {
+  background: #005bb5;
+}

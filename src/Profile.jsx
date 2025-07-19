@@ -51,6 +51,29 @@ const Profile = () => {
           ))}
         </ul>
       </div>
+      <div className="profile-projects">
+        <strong>My Projects:</strong>
+        <ul>
+          <li>
+            <a
+              href={details.Portfolio}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Portfolio Website
+            </a>
+          </li>
+          <li>
+            <a
+              href={details["Emotion-Recognition"]}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Emotion Recognition Project
+            </a>
+          </li>
+        </ul>
+      </div>
     </aside>
   );
 };
