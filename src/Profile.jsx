@@ -12,194 +12,122 @@ const Profile = () => {
   if (!details) return <p>Loading profile...</p>;
 
   return (
-    <aside className="profile-column animate-slide-in">
-      <img
-        src="/assets/ayush.jpg"
-        alt={details.name}
-        className="profile-photo animate-fade-in"
-        style={{ marginLeft: 0 }}
-      />
-      <h2 className="profile-name animate-fade-in-delay">{details.name}</h2>
-      <p className="profile-role animate-fade-in-delay2">{details.role}</p>
-      <p className="profile-details animate-fade-in-delay3">
-        A passionate Computer Science graduate driven to solve real-world
-        challenges and proficient in full-stack development fundamentals. Gained
-        practical experience through an internship, academic coursework, and
-        personal projects. Eager to contribute to a growth-oriented organization
-        while continuously developing skills and delivering value through
-        innovative solutions.
+    <>
+      <img src="/assets/ayush.jpg" alt={details.name} className="profile-img" />
+      <h2 className="profile-name">{details.name}</h2>
+      <p className="profile-role">{details.role}</p>
+      <p className="profile-bio">
+        {details.bio ||
+          "A passionate Computer Science graduate driven to solve real-world challenges and proficient in full-stack development fundamentals. Gained practical experience through an internship, academic coursework, and personal projects. Eager to contribute to a growth-oriented organization while continuously developing skills and delivering value through innovative solutions."}
       </p>
-      <div
-        className="profile-contact animate-fade-in-delay4"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "2.5rem",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          flexWrap: "wrap",
-          width: "100%",
-        }}
-      >
-        <span>
-          <a
-            href={`tel:${details["Mobile Number"]}`}
-            style={{
-              marginRight: "6px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            title="Call Mobile"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#0077ff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: "4px" }}
-            >
-              <path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13.81.28 1.61.46 2.39a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6.29 6.29l1.27-1.27a2 2 0 0 1 2.11-.45c.78.18 1.58.33 2.39.46A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <strong>Mobile:</strong>
-          </a>{" "}
-          {details["Mobile Number"]}
-        </span>
-        <span>
-          <a
-            href={`mailto:${details.Email}`}
-            style={{
-              marginRight: "6px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            title="Send Email"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#0077ff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: "4px" }}
-            >
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <polyline points="3 7 12 13 21 7" />
-            </svg>
-            <strong>Email:</strong>
-          </a>{" "}
-          {details.Email}
-        </span>
-        <span>
-          <a
-            href={details.LinkedIn}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              marginRight: "6px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            title="LinkedIn Profile"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#0077ff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: "4px" }}
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5" />
-              <line x1="8" y1="11" x2="8" y2="16" />
-              <line x1="8" y1="8" x2="8" y2="8" />
-              <line x1="12" y1="16" x2="12" y2="11" />
-              <path d="M16 16v-3a2 2 0 0 0-4 0" />
-            </svg>
-            <strong>LinkedIn:</strong>
-          </a>{" "}
-          Profile
-        </span>
-        <span>
-          <a
-            href={`https://github.com/${details.GitHub}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              marginRight: "6px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-            title="GitHub Profile"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#0077ff"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ marginRight: "4px" }}
-            >
-              <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.36 6.84 9.72.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.41-1.07-1-1.36-1-1.36-.82-.57.06-.56.06-.56.91.07 1.39.95 1.39.95.81 1.41 2.13 1 2.65.77.08-.59.32-1 .58-1.23-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.38-2.03 1-2.75-.1-.26-.44-1.3.09-2.7 0 0 .83-.27 2.73 1.02a9.18 9.18 0 0 1 2.49-.34c.85 0 1.71.12 2.49.34 1.9-1.29 2.73-1.02 2.73-1.02.53 1.4.19 2.44.09 2.7.62.72 1 1.63 1 2.75 0 3.94-2.34 4.81-4.57 5.07.33.29.62.86.62 1.73 0 1.25-.01 2.26-.01 2.57 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" />
-            </svg>
-            <strong>GitHub:</strong>
-          </a>
-          {details.GitHub}
-        </span>
+      <div className="profile-links">
+        <a
+          href={
+            details.GitHub
+              ? `https://github.com/${details.GitHub}`
+              : "https://github.com/ayushchhipa1509"
+          }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
+        </a>
+        <a
+          href={details.LinkedIn || "https://linkedin.com/in/ayushchhipa1509"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.156 1.459-2.156 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z" />
+          </svg>
+        </a>
+        <a href={`mailto:${details.Email || "ayushchhipa1509@gmail.com"}`}>
+          <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 12.713l-11.985-8.713h23.97l-11.985 8.713zm11.985-10.713h-23.97c-1.104 0-2.015.896-2.015 2v16c0 1.104.911 2 2.015 2h23.97c1.104 0 2.015-.896 2.015-2v-16c0-1.104-.911-2-2.015-2zm-11.985 13.287l-11.985-8.713v14.426c0 1.104.911 2 2.015 2h23.97c1.104 0 2.015-.896 2.015-2v-14.426l-11.985 8.713z" />
+          </svg>
+        </a>
       </div>
-      <div className="profile-skills animate-fade-in-delay5">
+      <div className="profile-info">
+        <p>
+          Email:{" "}
+          <span className="profile-info-bold">
+            {details.Email || "ayushchhipa1509@gmail.com"}
+          </span>
+        </p>
+        <p>
+          Location:{" "}
+          <span className="profile-info-bold">
+            {details.Location || "India"}
+          </span>
+        </p>
+        {details["Mobile Number"] && (
+          <p>
+            Mobile:{" "}
+            <span className="profile-info-bold">
+              {details["Mobile Number"]}
+            </span>
+          </p>
+        )}
+      </div>
+      <div className="profile-skills">
         <strong>Skills:</strong>
         <ul>
-          {details.skills.map((skill) => (
+          {(
+            details.skills || [
+              "C++",
+              "Python",
+              "JavaScript",
+              "Java",
+              "HTML, CSS, React, Node.js, Express, Flask",
+              "MongoDB, MySQL, SQLite",
+              "Git, GitHub, VS Code, Postman",
+            ]
+          ).map((skill) => (
             <li key={skill}>{skill}</li>
           ))}
         </ul>
       </div>
-      <div className="profile-projects animate-fade-in-delay6">
+      <div className="profile-projects">
         <strong>My Projects:</strong>
         <ul>
-          <li>
-            <a
-              href={details.Portfolio}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio Website
-            </a>
-          </li>
-          <li>
-            <a
-              href={details["Emotion-Recognition"]}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Emotion Recognition Project
-            </a>
-          </li>
+          {details.Portfolio && (
+            <li>
+              <a
+                href={details.Portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#facc15", textDecoration: "underline" }}
+              >
+                Portfolio Website
+              </a>
+            </li>
+          )}
+          {details["Emotion-Recognition"] && (
+            <li>
+              <a
+                href={details["Emotion-Recognition"]}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#facc15", textDecoration: "underline" }}
+              >
+                Emotion Recognition Project
+              </a>
+            </li>
+          )}
         </ul>
       </div>
-      <div className="profile-resume animate-fade-in-delay7">
+      <div style={{ marginTop: "1.5rem", width: "100%", textAlign: "center" }}>
         <a
           href="/assets/Ayush_Chhipa_Resume.pdf"
           download
-          className="resume-link"
+          className="resume-btn"
         >
           Download My Resume
         </a>
       </div>
-    </aside>
+    </>
   );
 };
 

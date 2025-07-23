@@ -24,19 +24,19 @@ const Projects = () => {
   return (
     <div>
       <h2>Portfolio Projects</h2>
-      <ul>
+      <div className="grid grid-cols-1 grid-cols-2 grid-cols-3">
         {projects.map((project) => (
-          <li key={project.id}>
+          <div key={project.id} className="project-card">
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            {project.link ? (
+            {project.link && (
               <a href={project.link} target="_blank" rel="noopener noreferrer">
                 View Project
               </a>
-            ) : null}
-          </li>
+            )}
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
