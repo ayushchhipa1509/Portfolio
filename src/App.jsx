@@ -2,6 +2,7 @@ import "./index.css";
 import Projects from "./Projects";
 import Profile from "./Profile";
 import Messages from "./Messages";
+import Blog from "./Blog";
 import { useState } from "react";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
           </li>
           <li>
             <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#blog">Blog</a>
           </li>
           <li>
             <a href="#contact">Contact</a>
@@ -171,6 +175,10 @@ function App() {
           <section id="projects">
             <h1>Portfolio Projects</h1>
             <Projects />
+          </section>
+          {/* Blog Section */}
+          <section id="blog">
+            <Blog />
           </section>
           {/* Contact Section */}
           <section id="contact">
